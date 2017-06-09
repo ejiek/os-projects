@@ -1,0 +1,58 @@
+\include{settings}
+
+\begin{document}	% начало документа
+\counterwithin{lstlisting}{section}
+
+% Титульная страница
+\include{titlepage}
+
+% Реферат
+\include{abstract}
+
+% Содержание
+\include{ToC}
+
+\section*{Введение}
+\addcontentsline{toc}{section}{Введение}
+
+
+\section{Программа работы}
+
+
+\section{Теоретическая информация}
+
+
+\section{Ход выполнения работы}
+
+\subsection{Листинг}
+
+\captionof{lstlisting}{hell\_o.c} % для печати символ '_' требует выходной символ '\'
+\lstinputlisting[label=code:hello]{listings/hell_o.c}
+\parindent=1cm % командна \lstinputlisting сбивает параментры отступа
+Текст без отступа (следует за вставкой)
+
+Новый параграф
+
+\noindent Новый параграф с принудительно выключенным отступом
+
+
+\subsection{Частичный листинг}
+% настрока частичного ввода (требуется один раз)
+\makeatletter
+\def\lst@PlaceNumber{\llap{\normalfont
+                \lst@numberstyle{\the\lst@lineno}\kern\lst@numbersep}}
+\makeatother
+
+\captionof{lstlisting}{фрагмент hell\_o.c}
+\lstinputlisting[label=code:hello_mod, linerange={4-5}]{listings/hell_o.c}
+\parindent=1cm
+
+\section*{Заключение}
+\addcontentsline{toc}{section}{Заключение}
+
+
+\renewcommand\refname{Список использованных источников}
+\bibliography{sources}
+\addcontentsline{toc}{section}{Список использованных источников}
+
+\end{document}
